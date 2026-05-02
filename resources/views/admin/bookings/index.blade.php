@@ -8,7 +8,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             overflow: hidden;
         ">
-        <table style="width: 100%; border-collapse: collapse;">
+        <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
             <thead style="background: #f9fafb;">
                 <tr>
                     <th style="padding: 14px; text-align: left;">User</th>
@@ -29,11 +29,34 @@
                         <td style="padding: 14px;">{{ $booking->car->model }}</td>
                         <td style="padding: 14px;">{{ $booking->start_date }}</td>
                         <td style="padding: 14px;">{{ $booking->end_date }}</td>
-                        <td style="padding: 14px;">{{ $booking->pickup_location }}</td>
-                        <td style="padding: 14px;">{{ $booking->return_location }}</td>
+                        <td 
+                            title="{{ $booking->pickup_location }}"
+                            style="
+                                padding: 14px;
+                                max-width: 160px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            "
+                        >
+                            {{ $booking->pickup_location }}
+                        </td>
+
+                        <td 
+                            title="{{ $booking->return_location }}"
+                            style="
+                                padding: 14px;
+                                max-width: 160px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            "
+                        >
+                            {{ $booking->return_location }}
+                        </td>
                         <td style="padding: 14px;">RM {{ number_format($booking->total_price, 2) }}</td>
                         <td style="padding: 14px;">{{ ucfirst($booking->status) }}</td>
-                        <td style="padding: 14px; text-align: center;">
+                        <td style="padding: 14px; display: flex; justify-content: center; align-items: center;">
                             <a href="{{ route('admin.bookings.edit', $booking->id) }}"
                                style="
                                     background: #f59e0b;

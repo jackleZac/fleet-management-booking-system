@@ -42,6 +42,11 @@ stripe listen --forward-to localhost:8000/stripe/webhook
 ![Homepage screenshot](screenshots/home.jpeg)
 ![Cars screenshot](screenshots/cars.jpeg)
 
+**Admin Dashboard**
+
+![Admin Dashboard screenshot](screenshots/admin-dashboard.png)
+![Create Cars screenshot](screenshots/admin-create-cars.jpeg)
+
 ## Attributions
 1. The images of cars, with the exception of AI-generated Perodua and BMW, are retrieved from Kaggle: https://www.kaggle.com/datasets/fareselmenshawii/license-plate-dataset. 
 2. The promotional image displayed on the right is sourced from [Unsplash](https://unsplash.com/@jessicamaephotographyga)

@@ -22,7 +22,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             overflow: hidden;
         ">
-        <table style="width: 100%; border-collapse: collapse;">
+        <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
             <thead style="background: #f9fafb;">
                 <tr>
                     <th style="padding: 14px; text-align: left;">Question</th>
@@ -33,9 +33,18 @@
             <tbody>
                 @foreach ($faqs as $faq)
                     <tr style="border-top: 1px solid #e5e7eb;">
-                        <td style="padding: 14px;">{{ $faq->question }}</td>
-                        <td style="padding: 14px;">{{ Str::limit($faq->answer, 80) }}</td>
-                        <td style="padding: 14px; text-align: center;">
+                        <td 
+                            title="{{ $faq->question }}"
+                            style="
+                                padding: 14px;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            ">
+                            {{ $faq->question }}
+                        </td>
+                        <td title ="{{ Str::limit($faq->answer, 80) }}" style="padding: 14px;">{{ Str::limit($faq->answer, 80) }}</td>
+                        <td style="padding: 14px; display: flex; justify-content: center; align-items: center;">
                             <a href="{{ route('admin.faqs.edit', $faq->id) }}"
                                style="
                                     background: #f59e0b;

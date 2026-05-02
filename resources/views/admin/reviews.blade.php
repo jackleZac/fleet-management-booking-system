@@ -8,7 +8,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             overflow: hidden;
         ">
-        <table style="width: 100%; border-collapse: collapse;">
+        <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
             <thead style="background: #f9fafb;">
                 <tr>
                     <th style="padding: 14px; text-align: left;">User</th>
@@ -24,7 +24,16 @@
                         <td style="padding: 14px;">{{ $review->user->name }}</td>
                         <td style="padding: 14px;">{{ $review->car->model }}</td>
                         <td style="padding: 14px;">{{ $review->rating }}</td>
-                        <td style="padding: 14px;">{{ $review->comment }}</td>
+                        <td 
+                            title="{{ $review->comment }}"
+                            style="
+                                padding: 14px;
+                                white-space: no-wrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                ">
+                            {{ $review->comment }}
+                        </td>
                         <td style="padding: 14px;">{{ $review->created_at->format('Y-m-d') }}</td>
                     </tr>
                 @endforeach

@@ -73,9 +73,8 @@
         <div style="text-align: right;">
             <h3>Send Us Enquiry</h3>
             <ul>
-                <li>016 - XXXXXXXX</li>
-                <li>082 - XXXXXXXX</li>
-                <li>journeygo@journey.com</li>
+                <li>{{ $contactInfo->phone }}</li>
+                <li>{{ $contactInfo->email }}</li>
             </ul>
         </div>
     </div>

@@ -58,23 +58,23 @@
                 color: #FFF;
                 ">
                 <div>
-                    <h3 style="font-size: 1.1em;">Established Year</h3>
+                    <h3 style="font-size: 1.1em; margin-bottom: 6px;">Established Year</h3>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <img src="{{ asset('icons/calendar.svg') }}" alt="Calendar Icon" style="width: 1.2em; height: 1.2em; vertical-align: middle; margin-right: 8px;">
-                        <span style="font-size: 1em; font-weight: bold;">2004</span>
+                        <img src="{{ asset('icons/calendar.svg') }}" alt="Calendar Icon" style="width: 1em; height: 1em; vertical-align: middle; margin-right: 8px;">
+                        <span style="font-size: 1em; font-weight: 400;">2004</span>
                     </div>
                 </div>
                 <div>
-                    <h3 style="font-size: 1.1em;">Number of Cars</h3>
+                    <h3 style="font-size: 1.1em; margin-bottom: 6px;">Number of Cars</h3>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <span style="font-size: 1em; font-weight: bold;">15</span>
+                        <span style="font-size: 1em; font-weight: 400;">{{ $numOfCars }}</span>
                     </div>
                 </div>
                 <div>
-                    <h3 style="font-size: 1.1em;">Average Rating</h3>
+                    <h3 style="font-size: 1.1em; margin-bottom: 6px;">Average Rating</h3>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <img src="{{ asset('icons/star.svg') }}" alt="Star Icon" style="width: 1.2em; height: 1.2em; vertical-align: middle; margin-right: 8px;">
-                        <span style="font-size: 1em; font-weight: bold;">4.6</span>
+                        <img src="{{ asset('icons/star.svg') }}" alt="Star Icon" style="width: 1em; height: 1em; vertical-align: middle; margin-right: 8px;">
+                        <span style="font-size: 1em; font-weight: 400;">{{ number_format($avgRating, 2) }}</span>
                     </div>
                 </div>
             </div>

@@ -21,26 +21,45 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         overflow: hidden;
     ">
-        <table style="width: 100%; border-collapse: collapse;">
+        <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
             <thead style="background: #f9fafb;">
                 <tr>
-                    <th style="padding: 14px; text-align: left;>Title</th>
-                    <th style="padding: 14px; text-align: left;>Description</th>
-                    <th style="padding: 14px; text-align: left;>Start Date</th>
-                    <th style="padding: 14px; text-align: left;>End Date</th>
-                    <th style="padding: 14px; text-align: left;>Discount (%)</th>
-                    <th style="padding: 14px; text-align: left;>Actions</th>
+                    <th style="padding: 14px; text-align: left;">Title</th>
+                    <th style="padding: 14px; text-align: left;">Description</th>
+                    <th style="padding: 14px; text-align: left;">Start Date</th>
+                    <th style="padding: 14px; text-align: left;">End Date</th>
+                    <th style="padding: 14px; text-align: left;">Discount (%)</th>
+                    <th style="padding: 14px; text-align: left;">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($promotions as $promotion)
                     <tr style="border-top: 1px solid #e5e7eb;">
-                        <td style="padding: 14px;">{{ $promotion->title }}</td>
-                        <td style="padding: 14px;">{{ $promotion->description }}</td>
-                        <td style="padding: 14px;">{{ $promotion->start_date }}</td>
-                        <td style="padding: 14px;">{{ $promotion->end_date }}</td>
-                        <td style="padding: 14px;">{{ $promotion->discount_percentage }}</td>
-                        <td style="padding: 14px; text-align: center;">
+                        <td 
+                        title="{{ $promotion->title }}"
+                        style="
+                            max-width: 600px;
+                            padding: 14px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        ">{{ $promotion->title }}
+                        </td>
+                        <td 
+                        title="{{ $promotion->description }}"
+                        style="
+                            max-width: 600px;
+                            padding: 14px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            ">
+                            {{ $promotion->description }}
+                        </td>
+                        <td style="padding: 14px;">{{ $promotion->start_date ?? 'N/A' }}</td>
+                        <td style="padding: 14px;">{{ $promotion->end_date ?? 'N/A' }}</td>
+                        <td style="padding: 14px;">{{ $promotion->discount_percentage ?? 'N/A' }}</td>
+                        <td style="padding: 14px; display: flex; justify-content: center; align-items: center;">
                             <a href="{{ route('admin.promotions.edit', $promotion->id) }}"
                                 style="
                                 background: #f59e0b;

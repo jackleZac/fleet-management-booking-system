@@ -41,7 +41,7 @@
                         <td style="padding: 14px;">{{ $car->fuel }}</td>
                         <td style="padding: 14px;">RM {{ number_format($car->price_per_day, 2) }}</td>
                         <td style="padding: 14px;">{{ ucfirst($car->status) }}</td>
-                        <td style="padding: 14px; text-align: center;">
+                        <td style="padding: 14px; display: flex; justify-content: center; align-items: center;">
                             <a href="{{ route('admin.cars.edit', $car->id) }}"
                                style="
                                     background: #f59e0b;
