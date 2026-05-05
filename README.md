@@ -48,6 +48,27 @@ npm run dev
 ```
 stripe listen --forward-to localhost:8000/stripe/webhook
 ```
+### Run the project in Docker
+1. Build and start a container
+```
+docker-compose up -d --build
+```
+**Note**: The website is accessible via http://localhost:8000/
+
+2. Install dependencies
+```
+docker exec -it journeygo_app composer install
+```
+
+3. Create Laravel app encryption key
+```
+docker exec -it journeygo_app php artisan key:generate
+```
+
+4. Create MySQL tables
+```
+docker exec -it journeygo_app php artisan migrate
+```
 
 ## User Interface
 ![Homepage screenshot](screenshots/home.jpeg)

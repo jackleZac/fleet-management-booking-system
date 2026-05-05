@@ -73,8 +73,8 @@
         <div style="text-align: right;">
             <h3>Send Us Enquiry</h3>
             <ul>
-                <li>{{ $contactInfo->phone }}</li>
-                <li>{{ $contactInfo->email }}</li>
+                <li>{{ $contactInfo->phone ?? 'Phone number not provided' }}</li>
+                <li>{{ $contactInfo->email ?? 'Email not provided' }}</li>
             </ul>
         </div>
     </div>
