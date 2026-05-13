@@ -30,14 +30,16 @@
             <div style="
                 display: grid;
                 grid-template-columns: 1.4fr 1fr;
+                padding: 0 6em;
                 gap: 50px;
-                align-items: start;
+                align-items: center;
             ">
                 <!-- Booking info card -->
                 <div style="
                     background-color: #FFF;
                     border-radius: 8px;
                     padding: 22px;
+                    max-width: 600px;
                     min-height: 280px;
                     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                 ">

@@ -1,6 +1,29 @@
 <html>
     <head>
         <title>Car rental</title>
+        <style>
+            .status {
+                display: inline-block;
+                margin-bottom: 16px;
+                padding: 6px 8px; 
+                font-size: 0.8em; 
+                font-weight: 400; 
+                border-radius: 4px;
+            }
+            .view-details {
+                background-color: #ffffff;
+                color: black;
+                padding: 12px 16px;
+                border: #82b1db solid 1px;
+                border-radius: 5px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .view-details:hover {
+                background-color: #06457d;
+                color: white;
+            }
+        </style>
     </head>
     <body style="margin: 0; padding: 0;">
         @include('header')
@@ -10,7 +33,7 @@
             <section style="
                 background: #FFF;
                 color: #333;
-                margin: 0 4em;
+                margin: 0 10em;
                 padding: 1em;
                 display: flex;
                 flex-direction: column;
@@ -43,11 +66,18 @@
                         </div>
                     </div>
                 </div>                  
-                <button style="text-align: right; margin-top: 24px; background-color: transparent; border: none; padding: 0; cursor: pointer;">
-                    <a href="{{ route('profile.edit') }}" style="text-decoration: none; color: inherit;">
-                        Edit Profile
-                    </a>
-                </button>
+                <a href="{{ route('profile.edit') }}" style="
+                    background-color: #07589f;
+                    display: inline-block; 
+                    text-decoration: none; 
+                    color: white;
+                    text-align: right;
+                    align-self: flex-end;
+                    padding: 12px 16px;
+                    border-radius: 4px;
+                ">
+                    Edit Profile
+                </a>
             </section>
 
             {{-- Booking and Reviews --}}
@@ -55,7 +85,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 30px;
-                padding: 30px 4em;
+                margin: 30px 10em;
             ">
                 <!-- Booking History -->
                 <div>
@@ -74,17 +104,35 @@
                                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                             ">
                                 <div>
-                                    <p style="font-size: 0.9em; color: #555; margin: 0 0 18px 0;">
-                                        Booked on {{ $booking->created_at->format('j F Y') }}
-                                    </p>
-
-                                    <p style="font-size: 1.25em; font-weight: 700; margin: 0 0 20px 0;">
+                                    <p style="font-size: 1.12em; font-weight: 700; margin: 8px 0 16px 0;">
                                         {{ $booking->car->make }} {{ $booking->car->model }}
                                     </p>
+                                    @if ($booking->status == 'pending')
+                                        <div class="status" style="
+                                            background-color: #b96710; 
+                                            color: #FFF; 
+                                        ">
+                                            {{ ucfirst($booking->status) }}
+                                        </div>
+                                    @elseif ($booking->status == 'cancelled')
+                                        <div class="status" style="
+                                            background-color: #b92910; 
+                                            color: #FFF; 
+                                        ">
+                                            {{ ucfirst($booking->status) }}
+                                        </div>
+                                    @else
+                                        <div class="status" style="
+                                            background-color: #107a17; 
+                                            color: #FFF; 
+                                        ">
+                                            {{ ucfirst($booking->status) }}
+                                        </div>                                    
+                                    @endif
 
                                     <div style="display: flex; align-items: center;">
-                                        <div style="background-color: #514a00; display: flex; align-items: center; border-radius: 50%; padding: 8px; margin-right: 12px;">
-                                            <img src="{{ asset('icons/calendar.svg') }}" alt="Calendar Icon" style="width: 20px; height: 20px;">
+                                        <div style="background-color: #514a00; display: flex; align-items: center; border-radius: 50%; padding: 8px; margin-right: 20px;">
+                                            <img src="{{ asset('icons/calendar.svg') }}" alt="Calendar Icon" style="width: 16px; height: 16px;">
                                         </div>
                                         <div style="
                                             display: flex; 
@@ -93,13 +141,13 @@
                                             gap: 24px;
                                             ">
                                             <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                                                <p style="font-size: 0.9em; margin: 0 0 4px 0;">From</p>
-                                                <p style="font-size: 1.1em; margin: 0;">{{ \Carbon\Carbon::parse($booking->start_date)->format('j F Y') }}</p>
+                                                <p style="font-size: 0.8em; margin: 0 0 4px 0;">From</p>
+                                                <p style="font-size: 1em; margin: 0;">{{ \Carbon\Carbon::parse($booking->start_date)->format('j F Y') }}</p>
                                             </div>
 
                                             <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                                                <p style="font-size: 0.9em; margin: 0 0 4px 0;">To</p>
-                                                <p style="font-size: 1.1em; margin: 0;">{{ \Carbon\Carbon::parse($booking->end_date)->format('j F Y') }}</p>
+                                                <p style="font-size: 0.8em; margin: 0 0 4px 0;">To</p>
+                                                <p style="font-size: 1em; margin: 0;">{{ \Carbon\Carbon::parse($booking->end_date)->format('j F Y') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -112,19 +160,10 @@
                                     align-items: flex-end;
                                     min-height: 115px;
                                 ">
-                                    <p style="margin: 0;">
-                                        {{ ucfirst($booking->status) }}
+                                    <p style="font-size: 0.9em; color: #555; margin-top: 8px;">
+                                        Booked on {{ $booking->created_at->format('j F Y') }}
                                     </p>
-
-                                    <a href="{{ route('bookings.show', $booking->id) }}"
-                                    style="
-                                            background: #06457d;
-                                            color: white;
-                                            padding: 12px 16px;
-                                            border-radius: 5px;
-                                            text-decoration: none;
-                                            display: inline-block;
-                                    ">
+                                    <a href="{{ route('bookings.show', $booking->id) }}" class="view-details">
                                         View Details
                                     </a>
                                 </div>
@@ -136,6 +175,18 @@
                 <!-- Reviews History -->
                 <div>
                     <h2>Reviews History</h2>
+                    @if($reviews->isEmpty())
+                    <div style="
+                        background-color: #FFF; 
+                        height: 120px; 
+                        border-radius: 5px; 
+                        display: flex; 
+                        justify-content: center; 
+                        align-items: center;
+                    ">
+                        Currently you have no review
+                    </div>
+                    @else
                     <div style="display: flex; flex-direction: column; gap: 20px;">
                         @foreach($reviews as $review)
                             <div style="background:#fff; padding:20px; border-radius:5px;">
@@ -145,6 +196,7 @@
                             </div>
                         @endforeach
                     </div>
+                    @endif
                 </div>
             </section>
         </div>

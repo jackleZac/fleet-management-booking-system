@@ -49,6 +49,15 @@ class BookingController extends Controller
         return redirect()->back()->with('success', 'Booking marked as paid successfully.');
     }
 
+    // Mark booking as paid (manually)
+    public function markAsActive($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->status = 'active';
+        $booking->save();
+        return redirect()->back()->with('success', 'Booking marked as active successfully.');
+    }
+
     // Cancel booking
     public function cancel($id)
     {

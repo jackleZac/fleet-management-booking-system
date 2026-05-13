@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Admin Panel</title>
+    @yield('styles')
 </head>
 <style>
     .nav-link {

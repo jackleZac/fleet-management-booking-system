@@ -57,17 +57,6 @@
                         <td style="padding: 14px;">RM {{ number_format($booking->total_price, 2) }}</td>
                         <td style="padding: 14px;">{{ ucfirst($booking->status) }}</td>
                         <td style="padding: 14px; display: flex; justify-content: center; align-items: center;">
-                            <a href="{{ route('admin.bookings.edit', $booking->id) }}"
-                               style="
-                                    background: #f59e0b;
-                                    color: white;
-                                    padding: 8px 12px;
-                                    border-radius: 6px;
-                                    text-decoration: none;
-                                    margin-right: 6px;
-                               ">
-                                Edit
-                            </a>
                             <a href="{{ route('admin.bookings.show', $booking->id) }}"
                                style="
                                     background: #3b82f6;
