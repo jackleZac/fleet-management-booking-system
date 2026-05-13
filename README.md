@@ -73,6 +73,7 @@ docker exec -it journeygo_app php artisan migrate
 ## User Interface
 ![Homepage screenshot](screenshots/home.jpeg)
 ![Cars screenshot](screenshots/cars.jpeg)
+![Stripe checkout screenshot](screenshots/stripe-checkout.jpeg)
 
 **Admin Dashboard**
 

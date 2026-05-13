@@ -50,6 +50,7 @@ Route::middleware(['auth', 'admin'])
         Route::get('bookings/{id}/mark-as-paid', [AdminBookingController::class, 'markAsPaid'])->name('bookings.markAsPaid');
         Route::get('bookings/{id}/mark-as-active', [AdminBookingController::class, 'markAsActive'])->name('bookings.markAsActive');
         Route::get('bookings/{id}/complete', [AdminBookingController::class, 'complete'])->name('bookings.complete');
+        Route::get('bookings/{id}/cancel', [AdminBookingController::class, 'cancel'])->name('bookings.cancel');
         Route::resource('promotions', AdminPromotionController::class);
         Route::resource('reviews', AdminReviewController::class);
         Route::resource('faqs', AdminFaqController::class);
